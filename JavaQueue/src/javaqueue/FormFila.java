@@ -257,28 +257,22 @@ public class FormFila extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnAtenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtenderActionPerformed
-       if(!filaPrioridade.isEmpty()) {
-           if(qtd <3 ){
+       if(!filaPrioridade.isEmpty() && qtd <3) {
+          
            Pessoa p = new Pessoa();
            p = filaPrioridade.remove(); //dequeue
            lblProx.setText("Prox:"+p.getNome());
            mostra();
            qtd++;
-           } else{
-               Pessoa p = new Pessoa();
-           p = filaNormal.remove(); //dequeue
-           lblProx.setText("Prox:"+p.getNome());
-           mostra();
-           qtd=0;
-               
-           }
+           
        }
        else
-           if(filaPrioridade.isEmpty()) {
-           Pessoa p = new Pessoa();
-           p = filaNormal.remove(); //dequeue
-           lblProx.setText("Prox:"+p.getNome());
-           mostra();
+           if(!filaNormal.isEmpty()) {
+            Pessoa p = new Pessoa();
+            p = filaNormal.remove(); //dequeue
+            lblProx.setText("Prox:"+p.getNome());
+            mostra();
+            qtd=0;
     }else{
           if (filaPrioridade.isEmpty() && filaNormal.isEmpty()) {
               JOptionPane.showInputDialog("Fila vazia");
